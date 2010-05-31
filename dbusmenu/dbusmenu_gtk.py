@@ -1,6 +1,6 @@
 import gtk
 
-from cream.contrib.appindicator.dbusmenu import DBusMenu, Menu
+from cream.contrib.appindicators.dbusmenu import DBusMenu, Menu
 
 class DBusMenuGTK(object):
     def __init__(self, dbusmenu):

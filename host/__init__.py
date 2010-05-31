@@ -6,9 +6,9 @@ import gobject
 import cream.ipc
 from cream.util import cached_property
 
-from cream.contrib.appindicator import watcher
-from cream.contrib.appindicator.dbusmenu import DBusMenu
-from cream.contrib.appindicator.dbusmenu.dbusmenu_gtk import DBusMenuGTK
+from cream.contrib.appindicators import watcher
+from cream.contrib.appindicators.dbusmenu import DBusMenu
+from cream.contrib.appindicators.dbusmenu.dbusmenu_gtk import DBusMenuGTK
 
 SERVICE_NAME = 'org.kde.StatusNotifierHost-%d' % os.getpid()
 SERVICE_OBJECT = '/org/cream/StatusNotifierHost'
@@ -117,7 +117,6 @@ class StatusNotifierHost(cream.ipc.Object):
         cream.ipc.Object.__init__(self,
             SERVICE_NAME,
             SERVICE_OBJECT,
-            allow_replacement=True # to ensure proper reloading
             )
 
         self.bus = dbus.SessionBus()
