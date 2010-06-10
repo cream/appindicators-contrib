@@ -84,6 +84,8 @@ class ItemProxy(dbus.Interface, gobject.GObject):
     def get_icon_filename(self):
         import gtk
         theme = gtk.icon_theme_get_default()
+        if self.icon_theme_path:
+            theme.append_theme_path(self.icon_theme_path)
         info = theme.lookup_icon(self.icon_name, gtk.ICON_SIZE_LARGE_TOOLBAR, 0)
         if info is None:
             raise ValueError('Icon wasn\'t found! %r' % self.icon_name)
@@ -92,6 +94,8 @@ class ItemProxy(dbus.Interface, gobject.GObject):
     def get_attention_icon_filename(self):
         import gtk
         theme = gtk.icon_theme_get_default()
+        if self.icon_theme_path:
+            theme.append_theme_path(self.icon_theme_path)
         info = theme.lookup_icon(self.attention_icon_name, gtk.ICON_SIZE_LARGE_TOOLBAR, 0)
         if info is None:
             raise ValueError('Icon wasn\'t found! %r' % self.attention_icon_name)
