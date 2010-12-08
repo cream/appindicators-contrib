@@ -41,17 +41,17 @@ def dissect_service_name(service):
 class StatusNotifierWatcher(cream.ipc.Object):
 
     __ipc_signals__ = {
-        'ServiceRegistered': 's',
-        'ServiceUnregistered': 's',
-        'NotificationHostRegistered': '',
-        'NotificationHostUnregistered': '',
+        'ServiceRegistered': ('s', 'org.kde.StatusNotifierWatcher'),
+        'ServiceUnregistered': ('s', 'org.kde.StatusNotifierWatcher'),
+        'NotificationHostRegistered': ('', 'org.kde.StatusNotifierWatcher'),
+        'NotificationHostUnregistered': ('', 'org.kde.StatusNotifierWatcher')
     }
 
     def __init__(self):
 
         cream.ipc.Object.__init__(self,
             SERVICE_NAME,
-            SERVICE_OBJECT,
+            SERVICE_OBJECT
         )
 
         # A list of (bus name, path) of registered status notifier items.
@@ -133,4 +133,3 @@ if __name__ == '__main__':
     import gobject
     mainloop = gobject.MainLoop()
     mainloop.run()
-
